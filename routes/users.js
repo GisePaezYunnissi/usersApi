@@ -1,10 +1,15 @@
-//Rutas para crear suarios
-const express = require('express');
-const router = express.Router();
+const { Router } = require ('express');
+const { crearUsuario, loginUsuario, validarUsuario } = require('../controllers/authenticator');
 
-// Crea un usuario
-// api/usuarios
-router.post('/', () => {
+const router = Router();
 
-});
+// Crear un nuevo usuario
+router.post('/register', crearUsuario);
+
+// Login de usuario
+router.post('/', loginUsuario);
+
+// Validar y revalidar token
+router.get('/reregister', validarUsuario);
+
 module.exports = router;
